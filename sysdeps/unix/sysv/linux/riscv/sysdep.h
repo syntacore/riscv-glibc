@@ -47,7 +47,7 @@
 
 #define PSEUDO(name, syscall_name, args) \
   .align 2;							\
-  99: j __syscall_error;					\
+  99: la t1, __syscall_error; jr t1;				\
   ENTRY(name)							\
   li a7, SYS_ify(syscall_name);					\
   scall;							\
